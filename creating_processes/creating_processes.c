@@ -21,7 +21,7 @@
 int main()
 {
     // Array of burst times
-    int burst_times[] = {10, 15, 20, 3, 4, 2, 1, 5};
+    int burst_times[] = {3, 5, 2, 3, 4, 6, 1, 5};
     // Lenght of the array
     int num_processes = sizeof(burst_times) / sizeof(int);
 
@@ -45,14 +45,12 @@ int main()
             sleep(burst_times[i]);
             exit(EXIT_SUCCESS);
         }
-    }
-
-    // Parent process waits for all child processes
-    for (int i = 0; i < num_processes; i++)
-    {
-        // Wait child process completed
-        pid_t completed_pid = wait(NULL);
-        printf("Child Process PID: %d has finished execution.\n", completed_pid);
+        else
+        {
+            // Parent process - wait for the current child to complete
+            pid_t completed_pid = wait(NULL);
+            printf("Child Process PID: %d has finished execution.\n", completed_pid);
+        }
     }
 
     return 0;

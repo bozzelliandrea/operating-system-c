@@ -14,6 +14,6 @@ fi
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 # Build main program
-gcc "$SCRIPT_DIR/multi_thread.c" -o "$SCRIPT_DIR/multi_thread" -lpthread
+gcc "$SCRIPT_DIR/multi_thread.c" -o "$SCRIPT_DIR/multi_thread" -pthread
 
 echo "executable: $SCRIPT_DIR/multi_thread"
